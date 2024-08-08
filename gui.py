@@ -26,7 +26,7 @@ root.title("YouTube Downloader")
 
 # 下载路径变量
 download_path = tk.StringVar()
-download_path.set(os.path.expanduser("~/Download"))  # 默认下载路径为用户的主目录
+download_path.set(os.path.expanduser("~/Downloads"))  # 默认下载路径为用户的主目录
 
 # 创建并放置标签、输入框和按钮
 tk.Label(root, text="Enter YouTube URL:").pack(pady=10)
