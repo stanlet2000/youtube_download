@@ -41,6 +41,7 @@ def download_youtube_video(url, output_path, convert_to='mp4'):
         os.remove(new_file_path)
 
     print(f"File downloaded and converted to {convert_to} at {output_path}")
+    return f"File downloaded and converted to {convert_to} at {output_path}"
 
 if __name__ == "__main__":
     # Example usage
