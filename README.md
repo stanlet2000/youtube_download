@@ -21,8 +21,8 @@ This project provides a simple graphical user interface (GUI) to download YouTub
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/your-repo.git
-    cd your-repo
+    git clone https://github.com/stanlet2000/youtube_download.git
+    cd youtube_download
     ```
 
 2. **Create a virtual environment (optional but recommended):**
