@@ -1,6 +1,7 @@
+import os
+import sys
 from moviepy.editor import VideoFileClip, AudioFileClip
 from yt_dlp import YoutubeDL
-import os
 import re
 
 def sanitize_filename(filename):
@@ -31,14 +32,18 @@ def download_youtube_video(url, output_path, convert_to='mp4'):
         return  # Exit the function if the file is not found
 
     if convert_to == 'mp3':
-        # 转换为 mp3
-        video_clip = VideoFileClip(new_file_path)
-        audio_clip = video_clip.audio
-        audio_clip.write_audiofile(os.path.join(output_path, f"{sanitized_title}.mp3"))
-        audio_clip.close()
-        video_clip.close()
-        # 可选地，删除原始 mp4 文件
-        os.remove(new_file_path)
+        try:
+            # 转换为 mp3
+            video_clip = VideoFileClip(new_file_path)
+            audio_clip = video_clip.audio
+            audio_clip.write_audiofile(os.path.join(output_path, f"{sanitized_title}.mp3"))
+            audio_clip.close()
+            video_clip.close()
+            # 可选地，删除原始 mp4 文件
+            os.remove(new_file_path)
+        except Exception as e:
+            print(e)
+            return e
 
     print(f"File downloaded and converted to {convert_to} at {output_path}")
     return f"File downloaded and converted to {convert_to} at {output_path}"
