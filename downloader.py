@@ -16,6 +16,13 @@ class YouTubeDownloader:
     def sanitize_filename(filename):
         """Sanitize the filename to remove invalid characters."""
         return re.sub(r'[\\/*?:"<>|]', "", filename)
+    
+    def set_download_directory(self, new_path):
+        """Change the download directory."""
+        if not os.path.exists(new_path):
+            raise ValueError("The path does not exist")
+        self.output_path = new_path
+        print(f"Download directory set to: {self.output_path}")
 
     def download_video(self, url, convert_to='mp4'):
         """Download YouTube video and optionally convert it to mp3."""
@@ -52,6 +59,7 @@ class YouTubeDownloader:
 if __name__ == "__main__":
     # Example usage
     downloader = YouTubeDownloader()
+    downloader.set_download_directory(os.path.expanduser('~/Desktop'))
     url = 'https://youtu.be/7HgJIAUtICU?si=dTIrJlJoZyU2PTmZ'
     convert_to = 'mp3'  # Change to 'mp4' if needed
     downloader.download_video(url, convert_to=convert_to)
