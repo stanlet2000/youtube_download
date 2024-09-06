@@ -1,6 +1,7 @@
 import os
 import sys
-from gui import main
+from gui import main_window
+from downloader import YouTubeDownloader
 import multiprocessing
 
 
@@ -9,4 +10,6 @@ if __name__ == "__main__":
     print(os.environ['PATH'])
     print("!!!")
     multiprocessing.freeze_support()
-    main()
+    ytd = YouTubeDownloader("./")
+    print(ytd.output_path)
+    main_window(ytd)
